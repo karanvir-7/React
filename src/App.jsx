@@ -16,7 +16,7 @@ function CoreConcept1({image, title, description}) {
 
 function App() {
   return (
-    <div>
+    <div>``
       <Header />
       <main>
         <section id="core-concepts">
