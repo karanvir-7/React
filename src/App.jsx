@@ -15,9 +15,16 @@ function CoreConcept1({image, title, description}) {
   );
 }
 
+
 function App() {
+
+  function handleSelect(selectedButton){
+    console.log(selectedButton)
+  }
+
+  console.log('App Component rendering') //it will execute once not on any DOM change as REACT compnent only execute once -> we can do with state
   return (
-    <div>``
+    <div>
       <Header />
       <main>
         <section id="core-concepts">
@@ -35,10 +42,16 @@ function App() {
         <sections id="examples">
             <h2>Examples</h2>
             <menu>
-              <TabButton>Component</TabButton>
-              <TabButton>JSX</TabButton>
-              <TabButton>Props</TabButton>
-              <TabButton>State</TabButton>
+              <TabButton onSelect={() => handleSelect('components')}>Component</TabButton>
+              <TabButton onSelect={() => handleSelect('jsx')}>JSX</TabButton>
+              <TabButton onSelect={() => handleSelect('props')}>Props</TabButton>
+              <TabButton onSelect={() => handleSelect('state')}>State</TabButton> {
+              /* 
+                1. if we are passing onSelect={handleSelect('state')} it will run only on loading
+                2.  onSelect={ handleSelect}  by passing function pointer and it will be 
+                    called whenever we click tab button although can't pass value in this thats 
+                    why we are returning function from function
+              */}
             </menu>
         </sections>
       </main>
