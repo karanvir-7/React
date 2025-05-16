@@ -1,28 +1,40 @@
-import { CORE_CONCEPTS } from './data';
-import Header from './components/Header/Header';
-import CoreConcept from './components/CoreConcept';
-import TabButton from './components/TabButton';
+import { CORE_CONCEPTS, EXAMPLES } from "./data";
+import Header from "./components/Header/Header";
+import CoreConcept from "./components/CoreConcept";
+import TabButton from "./components/TabButton";
+import { useState } from "react";
 
-
-function CoreConcept1({image, title, description}) {
+function CoreConcept1({ image, title, description }) {
   // const { image, title, description } = props; destructuring props
   return (
-      <li>
-        <img src={image} alt={title}/>
-        <h3>{title}</h3>
-        <p>{description}</p>
-      </li>
+    <li>
+      <img src={image} alt={title} />
+      <h3>{title}</h3>
+      <p>{description}</p>
+    </li>
   );
 }
 
-
 function App() {
-
-  function handleSelect(selectedButton){
-    console.log(selectedButton)
+  const [selectedTopic, setSelectedTopic] = useState();
+  let selected = <p>Please Select a topic</p>
+  if(selectedTopic){
+    selected = (
+      <div id="tab-content">
+      <h3>{EXAMPLES[selectedTopic].title}</h3>
+      <p>{EXAMPLES[selectedTopic].description}</p>
+      <pre>
+        <code>{EXAMPLES[selectedTopic].code}</code>
+      </pre>
+    </div>
+    )
+  }
+  function handleSelect(selectedButton) {
+    setSelectedTopic(selectedButton);
+    console.log(selectedTopic);
   }
 
-  console.log('App Component rendering') //it will execute once not on any DOM change as REACT compnent only execute once -> we can do with state
+  console.log("App Component rendering"); //it will execute once not on any DOM change as REACT compnent only execute once -> we can do with state
   return (
     <div>
       <Header />
@@ -30,30 +42,37 @@ function App() {
         <section id="core-concepts">
           <h2>Core Concepts</h2>
           <ul>
-          <CoreConcept 
-            title = {CORE_CONCEPTS[0].title}
-            description = {CORE_CONCEPTS[0].description}
-            image = {CORE_CONCEPTS[0].image}/>
-          <CoreConcept1 { ...CORE_CONCEPTS[1]}/>
-          <CoreConcept/>
-          <CoreConcept/>
-        </ul>
-        </section>  
+            <CoreConcept
+              title={CORE_CONCEPTS[0].title}
+              description={CORE_CONCEPTS[0].description}
+              image={CORE_CONCEPTS[0].image}
+            />
+            <CoreConcept1 {...CORE_CONCEPTS[1]} />
+            <CoreConcept />
+            <CoreConcept />
+          </ul>
+        </section>
         <sections id="examples">
-            <h2>Examples</h2>
-            <menu>
-              <TabButton onSelect={() => handleSelect('components')}>Component</TabButton>
-              <TabButton onSelect={() => handleSelect('jsx')}>JSX</TabButton>
-              <TabButton onSelect={() => handleSelect('props')}>Props</TabButton>
-              <TabButton onSelect={() => handleSelect('state')}>State</TabButton> {
-              /* 
+          <h2>Examples</h2>
+          <menu>
+            <TabButton onSelect={() => handleSelect("components")}>
+              Component
+            </TabButton>
+            <TabButton onSelect={() => handleSelect("jsx")}>JSX</TabButton>
+            <TabButton onSelect={() => handleSelect("props")}>Props</TabButton>
+            <TabButton onSelect={() => handleSelect("state")}>
+              State
+            </TabButton>{" "}
+            {/* 
                 1. if we are passing onSelect={handleSelect('state')} it will run only on loading
                 2.  onSelect={ handleSelect}  by passing function pointer and it will be 
                     called whenever we click tab button although can't pass value in this thats 
                     why we are returning function from function
               */}
-            </menu>
+          </menu>
+          {selectedTopic}
         </sections>
+        {selected}
       </main>
     </div>
   );
