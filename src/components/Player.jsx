@@ -1,5 +1,5 @@
 import { useState } from "react";
-export default function Player({ initialName, symbol, isActive }) {
+export default function Player({ initialName, symbol, isActive,  onChangeName }) {
 
   const [playerName, setPlayerName] = useState(initialName)
   const [isEditing, setIsEditing] = useState(false);
@@ -8,6 +8,7 @@ export default function Player({ initialName, symbol, isActive }) {
     //react generally schedule the event in near future
     // setIsEditing((editing) => !editing); // => schedules a state update can have previous value
     setIsEditing((editing) => !editing); //=> schedules a state update
+    if( isEditing ) onChangeName(symbol, playerName); // call the callback function to update the player name
   }
 
   function handleChange(event) {
