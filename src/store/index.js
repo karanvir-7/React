@@ -1,37 +1,29 @@
-import { legacy_createStore } from 'redux';
+
+import { createSlice, configureStore } from '@reduxjs/toolkit';
 
 const initialState = { counter: 0 };
-//We always return a new state object in the reducer
-//We never mutate the state directly // if mutate we have unpredicable behavior and bugs
-//We always return a new state object in the reducer
-//It will always override the previous state
-//We can use the spread operator to copy the previous state
 
-const counterReducer= (state = initialState,action) => {
-
-    if (action.type === 'increment') {
-        return { 
-            ...state,
-            counter: state.counter + 1
-         }; 
-    }   
-
-    if (action.type == 'increase') {
-        return {
-            ...state,
-            counter: state.counter + action.amount
+const counterSlice = createSlice({
+    name: 'counter',
+    initialState: initialState,
+    reducers: {
+        increment(state) {
+            state.counter++; //we can mutate the state directly here because Redux Toolkit uses Immer under the hood
+        },
+        increase(state, action) {
+            state.counter += action.payload; //action.payload contains the amount to increase
+        },
+        decrement(state) {
+            state.counter--;
         }
     }
+});
 
-    if(action.type === 'decrement') {
-        return { 
-            ...state,
-            counter: state.counter - 1
-        };
-    }
 
-    return state;
-}
-const store = legacy_createStore(counterReducer);
 
+const store = configureStore({
+    reducer:  counterSlice.reducer
+});
+
+export const counterActions = counterSlice.actions; //this line is not necessary but can be used to export actions if needed
 export default store;
