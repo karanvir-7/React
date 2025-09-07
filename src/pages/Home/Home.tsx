@@ -1,4 +1,24 @@
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 const Home: React.FC = () => {
+   const [data, setData] = useState(null);
+   useEffect(() => {
+      fetch('https://jsonplaceholder.typicode.com/posts')
+      .then(response => {
+         console.log(response);
+         return response.json();
+      })
+      .then(json => console.log(json))
+      .catch(error => console.error(error));
+      
+      axios.get('https://jsonplaceholder.typicode.com/posts')
+      .then(response => {
+        console.log(response.data);
+      })
+      .catch(error => {
+        console.error(error);
+      });
+   }, []);
   return (
     <div className="card bg-base-100 w-96 shadow-sm">
       <figure>
