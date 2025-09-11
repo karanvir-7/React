@@ -21,11 +21,12 @@ const Home: React.FC = () => {
   }
 
   return (
-    <>
+    <div className="flex flex-row flex-wrap gap-4 justify-center p-8
+    ">
       {products.map((product: any) => (
-        <Card key={product.id} product={product}></Card>
+        <Card key={product.id} product={product} />
       ))}
-    </>
+    </div>
   );
 };
 

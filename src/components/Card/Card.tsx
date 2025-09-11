@@ -2,20 +2,21 @@ import React from "react";
 
 const Card: React.FC<{ product: any }> = ({ product }) => {
   return (
-    <div className="card bg-base-100 w-96 shadow-sm ">
+    <div className="card w-96 bg-base-100 shadow border border-base-300">
       <figure>
         <img
           src={product?.images?.[0] ?? "https://placeimg.com/400/225/arch"}
           alt="Shoes"
+          className="h-45 w-40 object-cover"
         />
       </figure>
       <div className="card-body">
         <h2 className="card-title">{product?.title ?? "-"}</h2>
-        <p>
-         {product?.description ?? "-"}
-        </p>
+        <p>{product?.description ?? "-"}</p>
         <div className="card-actions justify-end">
-          <button className="btn btn-primary">Buy Now</button>
+          <button className="btn btn-primary">Add To Cart</button>
+          <button className="btn btn-info">Buy Now</button>
+          <button className="btn btn-info">View</button>
         </div>
       </div>
     </div>
