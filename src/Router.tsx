@@ -30,7 +30,7 @@ const Router = createBrowserRouter([
       {
         path: "github",
         element: <Github />,
-        loader: githubInfoLoader ,
+        loader: githubInfoLoader , // it is used for calling function api call while component is mounted
       }
     ],
   },
