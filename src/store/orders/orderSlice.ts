@@ -2,10 +2,10 @@ import { createSlice } from '@reduxjs/toolkit';
 import initialState from '../state';
 
 const orderSlice = createSlice({
-    name: 'counter',
+    name: 'order',
     initialState: initialState,
     reducers: {
-        increment(state) {
+        increment: (state) => {
             state.counter++; //we can mutate the state directly here because Redux Toolkit uses Immer under the hood
         },
         increase(state, action) {

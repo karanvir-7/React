@@ -1,3 +1,3 @@
-const initialState = { counter: 0 };
+const initialState = { counter: 0, cartItems: [] };
 
 export default initialState;

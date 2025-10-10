@@ -1,6 +1,15 @@
 import React from "react";
+import { useDispatch } from 'react-redux';
+import { cartActions } from '../../store/cart/cartSlice';
 
 const Card: React.FC<{ product: any }> = ({ product }) => {
+
+  const dispatch = useDispatch();
+
+  const addToCart = () => {
+    dispatch(cartActions.ADD_TO_CART(product));
+  }
+
   return (
     <div className="card w-96 bg-base-100 shadow border border-base-300">
       <figure>
@@ -14,7 +23,7 @@ const Card: React.FC<{ product: any }> = ({ product }) => {
         <h2 className="card-title">{product?.title ?? "-"}</h2>
         <p>{product?.description ?? "-"}</p>
         <div className="card-actions justify-end">
-          <button className="btn btn-primary">Add To Cart</button>
+          <button className="btn btn-primary" onClick={addToCart}>Add To Cart</button>
           <button className="btn btn-info">Buy Now</button>
           <button className="btn btn-info">View</button>
         </div>
