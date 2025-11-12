@@ -1,8 +1,9 @@
 import React from "react";
 import { useDispatch } from 'react-redux';
 import { cartActions } from '../../store/cart/cartSlice';
+import { Product } from "../../shared/types/product";
 
-const Card: React.FC<{ product: any }> = ({ product }) => {
+const Card: React.FC<{ product: Product }> = ({ product }) => {
 
   const dispatch = useDispatch();
 

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Card from "../../components/Card/Card";
+import { Product } from "../../shared/types/product";
 
 const Home: React.FC = () => {
   const [products, setProducts] = useState([]);
@@ -23,7 +24,7 @@ const Home: React.FC = () => {
   return (
     <div className="flex flex-row flex-wrap gap-4 justify-center p-8
     ">
-      {products.map((product: any) => (
+      {products.map((product: Product) => (
         <Card key={product.id} product={product} />
       ))}
     </div>
