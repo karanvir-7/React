@@ -5,6 +5,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Contact from "./pages/Contact/Contact";
 import User from "./pages/User/User";
 import Github, { githubInfoLoader } from "./pages/Github/Github";
+import CartItem from "./components/Cart/CartItem";
 
 const Router = createBrowserRouter([
   {
@@ -28,10 +29,14 @@ const Router = createBrowserRouter([
         element: <User />,
       },
       {
+        path: "cart",
+        element: <CartItem />,
+      },
+      {
         path: "github",
         element: <Github />,
-        loader: githubInfoLoader , // it is used for calling function api call while component is mounted
-      }
+        loader: githubInfoLoader, // it is used for calling function api call while component is mounted
+      },
     ],
   },
 ]);
