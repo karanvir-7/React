@@ -12,7 +12,7 @@ const Home: React.FC = () => {
   function getProducts() {
     axios
       .get("https://dummyjson.com/products")
-      .then((response: any) => {
+      .then((response) => {
         setProducts(response.data.products ?? []);
       })
       .catch((error) => {
