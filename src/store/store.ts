@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import orderSlice from "./orders/orderSlice";
+import userSlice from "./user/userSlice";
 import cartSlice from "./cart/cartSlice";
 
 const store = configureStore({
-  reducer: { orderSlice, cartSlice },
+  reducer: { userSlice, cartSlice },
 });
 
 //this line is not necessary but can be used to export actions if needed

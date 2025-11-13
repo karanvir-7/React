@@ -1,7 +1,12 @@
 import { Link, NavLink } from "react-router-dom";
 import Cart from "../Cart/Cart";
+import { useEffect, useState } from "react";
+import { User } from "../../shared/types/user";
+import { useSelector } from "react-redux";
+import { State } from "../../shared/types/state";
 
 export default function Header() {
+  const user  = (useSelector((state:State) => state.userSlice?.user));
   return (
     <header className="shadow sticky z-50 top-0">
       <nav className="bg-white border-gray-200 px-4 lg:px-6 py-2.5">
@@ -21,9 +26,7 @@ export default function Header() {
               Log in
             </Link>
 
-            <Link
-              to="/cart"
-            >
+            <Link to="/cart">
               <Cart />
             </Link>
           </div>

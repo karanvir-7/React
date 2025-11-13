@@ -1,7 +1,11 @@
 import React from "react";
-import { useLoaderData, useParams } from "react-router-dom";
+import { useLoaderData} from "react-router-dom";
+import  { User } from "../../shared/types/user";
+import { useDispatch } from "react-redux";
+import { userActions } from "../../store/user/userSlice";
+
 const Github: React.FC = () => {
-  const data = useLoaderData();
+  const data = useLoaderData<User>();
       // const [data, setData] = useState([])
     // useEffect(() => {
     //  fetch('https://api.github.com/users/hiteshchoudhary')
@@ -11,7 +15,8 @@ const Github: React.FC = () => {
     //     setData(data)
     //  })
     // }, [])
-    
+    const dispatch = useDispatch();
+    dispatch(userActions.SET_USER(data));
   return (
     <div className='text-center m-4 bg-gray-600 text-white p-4 text-3xl'>Github followers: {data?.followers}
     <img src={data?.avatar_url} alt="Git picture" width={300} />
