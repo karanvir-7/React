@@ -5,7 +5,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Contact from "./pages/Contact/Contact";
 import User from "./pages/User/User";
 import Github, { githubInfoLoader } from "./pages/Github/Github";
-import CartItem from "./components/Cart/CartItem";
+import CartItem from "./components/CartItem/CartItem";
 
 const Router = createBrowserRouter([
   {
