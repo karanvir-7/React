@@ -11,14 +11,14 @@ const Home: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalItems, setTotalItems] = useState(0);
   const limit = 10;
-  
+
   useEffect(() => {
-    getProducts(limit,currentPage);
+    getProducts(limit, currentPage);
   }, []);
 
-  function getProducts(limit:number, currentPage:number) {
+  function getProducts(limit: number, currentPage: number) {
     axios
-      .get(url.getProducts(limit, (currentPage-1) * limit))
+      .get(url.getProducts(limit, (currentPage - 1) * limit))
       .then((response) => {
         setProducts(response.data.products ?? []);
         setTotalItems(response.data.total ?? 0);
