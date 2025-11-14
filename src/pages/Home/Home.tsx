@@ -4,7 +4,6 @@ import Card from "../../components/Card/Card";
 import { Product } from "../../shared/interface/product";
 import Pagination from "../../components/Pagination/Pagination";
 import { url } from "../../shared/utils/urls";
-import { current } from "@reduxjs/toolkit";
 
 const Home: React.FC = () => {
   const [products, setProducts] = useState([]);
@@ -16,9 +15,9 @@ const Home: React.FC = () => {
     getProducts(limit, currentPage);
   }, []);
 
-  function getProducts(limit: number, currentPage: number) {
+  function getProducts(limit: number, index: number) {
     axios
-      .get(url.getProducts(limit, (currentPage - 1) * limit))
+      .get(url.getProducts(limit, (index - 1) * limit))
       .then((response) => {
         setProducts(response.data.products ?? []);
         setTotalItems(response.data.total ?? 0);

@@ -7,7 +7,7 @@ const Layout: React.FC = () => {
     <>
       <Header />
       <main>
-        <Outlet /> 
+        <Outlet />
       </main>
       <Footer />
     </>
