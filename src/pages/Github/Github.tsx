@@ -1,6 +1,6 @@
 import React from "react";
 import { useLoaderData} from "react-router-dom";
-import  { User } from "../../shared/types/user";
+import  { User } from "../../shared/interface/user";
 import { useDispatch } from "react-redux";
 import { userActions } from "../../store/user/userSlice";
 

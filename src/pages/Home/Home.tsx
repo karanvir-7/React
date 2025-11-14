@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Card from "../../components/Card/Card";
-import { Product } from "../../shared/types/product";
+import { Product } from "../../shared/interface/product";
 import Pagination from "../../components/Pagination/Pagination";
 import { url } from "../../shared/utils/urls";
 import { current } from "@reduxjs/toolkit";

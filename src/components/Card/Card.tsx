@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from 'react-redux';
 import { cartActions } from '../../store/cart/cartSlice';
-import { Product } from "../../shared/types/product";
+import { Product } from "../../shared/interface/product";
 
 const Card: React.FC<{ product: Product }> = ({ product }) => {
 

@@ -1,9 +1,9 @@
 import { Link, NavLink } from "react-router-dom";
 import Cart from "../Cart/Cart";
 import { useEffect, useState } from "react";
-import { User } from "../../shared/types/user";
+import { User } from "../../shared/interface/user";
 import { useSelector } from "react-redux";
-import { State } from "../../shared/types/state";
+import { State } from "../../shared/interface/state";
 
 export default function Header() {
   const user  = (useSelector((state:State) => state.userSlice?.user));

@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
-import { State } from "../../shared/types/state";
+import { State } from "../../shared/interface/state";
 
 const Cart: React.FC = () => {
   const cart = useSelector((state: State) => state?.cartSlice?.cartItems ?? []);
