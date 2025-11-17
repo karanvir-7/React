@@ -6,6 +6,8 @@ import Contact from "./pages/Contact/Contact";
 import User from "./pages/User/User";
 import Github, { githubInfoLoader } from "./pages/Github/Github";
 import CartItem from "./pages/CartItem/CartItem";
+import LogIn from "./pages/Authentication/LogIn/LogIn";
+import Register from "./pages/Authentication/Register/Register";
 
 const Router = createBrowserRouter([
   {
@@ -36,6 +38,14 @@ const Router = createBrowserRouter([
         path: "github",
         element: <Github />,
         loader: githubInfoLoader, // it is used for calling function api call while component is mounted
+      },
+      {
+        path: "login",
+        element: <LogIn />,
+      },
+      {
+        path: "register",
+        element: <Register />,
       },
     ],
   },
