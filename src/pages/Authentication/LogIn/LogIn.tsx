@@ -1,5 +1,8 @@
+import { signInWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { auth, db } from "../../../shared/config/firebase";
+import { doc, getDoc } from "firebase/firestore";
 
 const LogIn: React.FC = () => {
   const [values, setValues] = useState({ email: "", password: "" });
@@ -28,6 +31,16 @@ const LogIn: React.FC = () => {
     e.preventDefault();
     if (!canSubmit) return;
     console.log(values);
+    try{
+      const user = await signInWithEmailAndPassword(auth,values.email,values.password);
+      console.log('User Signed In successfully',user); 
+      auth.onAuthStateChanged(async (user) => {
+        const docRef = doc(db, "users", user?.uid as string);
+        const docSnap = await getDoc(docRef);
+        console.log(docRef,docSnap,docSnap.data());
+      })
+    }catch(err){
+    }
   }
 
   return (
