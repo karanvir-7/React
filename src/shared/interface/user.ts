@@ -9,4 +9,8 @@ export interface User{
     name: string;
     public_repos: number;
     avatar_url: string;
+    firstName?: string;
+    lastName?: string;
+    createdAt?: any;
+    email: string;
 }

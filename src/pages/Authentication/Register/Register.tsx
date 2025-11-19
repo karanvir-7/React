@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { auth, db } from "../../../shared/config/firebase";
 import { setDoc, doc } from "firebase/firestore";
-import { ToastContainer, toast } from "react-toastify";
+import { notify } from "../../../components/Toaster/Toaster";
 
 const LogIn: React.FC = () => {
   const navigate = useNavigate();
@@ -69,10 +69,10 @@ const LogIn: React.FC = () => {
           createdAt: new Date(),
         });
       }
-      toast.success("Registration successful");
+      notify.success("Registration successful");
       setTimeout(() => navigate("/login"), 1200);
     } catch (err:any) {
-      toast.error(err?.message ?? 'Registration failed');
+      notify.error(err?.message ?? 'Registration failed');
     }
   }
 
@@ -211,7 +211,6 @@ const LogIn: React.FC = () => {
           </button>
         </form>
       </div>
-      <ToastContainer position="top-right" autoClose={2000} hideProgressBar />
     </>
   );
 };

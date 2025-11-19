@@ -1,10 +1,16 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { auth, db } from "../../../shared/config/firebase";
 import { doc, getDoc } from "firebase/firestore";
+import { useDispatch } from "react-redux";
+import { userActions } from "../../../store/user/userSlice";
+import { notify } from "../../../components/Toaster/Toaster";
 
 const LogIn: React.FC = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const [values, setValues] = useState({ email: "", password: "" });
   const [touched, setTouched] = useState({ email: false, password: false });
 
@@ -30,16 +36,29 @@ const LogIn: React.FC = () => {
   ): Promise<void> {
     e.preventDefault();
     if (!canSubmit) return;
-    console.log(values);
-    try{
-      const user = await signInWithEmailAndPassword(auth,values.email,values.password);
-      console.log('User Signed In successfully',user); 
-      auth.onAuthStateChanged(async (user) => {
-        const docRef = doc(db, "users", user?.uid as string);
-        const docSnap = await getDoc(docRef);
-        console.log(docRef,docSnap,docSnap.data());
-      })
-    }catch(err){
+
+    try {
+      const cred = await signInWithEmailAndPassword(
+        auth,
+        values.email,
+        values.password
+      );
+      const docRef = doc(db, "Users", cred.user.uid); // change to "Users" if that is what you wrote
+      const docSnap = await getDoc(docRef);
+      if (docSnap.exists()) {
+        const raw = docSnap.data();
+        const userDetails = {
+          ...raw,
+          createdAt: raw.createdAt?.toMillis?.() ?? null, // Firestore Timestamp -> number
+        };
+        dispatch(userActions.SET_USER(userDetails));
+        notify.success("Login successful");
+        setTimeout(() => navigate("/"), 1200);
+      } else {
+        notify.error("Invalid User");
+      }
+    } catch (err) {
+      console.error("Login failed", err);
     }
   }
 
@@ -103,11 +122,8 @@ const LogIn: React.FC = () => {
         </button>
 
         <div className="p-2 justify-center">
-          Not registered yet?  
-          <Link
-            to="/register"
-            className="text-red-800 pl-2"
-          >
+          Not registered yet?
+          <Link to="/register" className="text-red-800 pl-2">
             Register
           </Link>
         </div>
