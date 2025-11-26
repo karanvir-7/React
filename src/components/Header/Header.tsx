@@ -1,13 +1,11 @@
 import { Link, NavLink } from "react-router-dom";
 import Cart from "../Cart/Cart";
-import { useEffect, useState } from "react";
-import { User } from "../../shared/interface/user";
 import { useSelector } from "react-redux";
 import { State } from "../../shared/interface/state";
+import logo from "../../shared/assets/images/logo.png";
 
 export default function Header() {
   const user = useSelector((state: State) => state.userSlice?.user);
-  console.log(user);
 
   return (
     <header className="shadow sticky z-50 top-0">
@@ -15,10 +13,11 @@ export default function Header() {
         <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
           <Link to="/" className="flex items-center">
             <img
-              src="https://alexharkness.com/wp-content/uploads/2020/06/logo-2.png"
+              src={logo}
               className="mr-3 h-12"
               alt="Logo"
             />
+            <span className="self-center text-xl font-semibold whitespace-nowrap">Exom</span>
           </Link>
           <div className="flex items-center lg:order-2">
             {!user.email && (
