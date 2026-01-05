@@ -27,15 +27,15 @@ const LogIn: React.FC = () => {
     values.newPassword.length >= 6 || values.newPassword === "";
   const confirmPasswordValid = values.confirmPassword === values.newPassword;
 
-  const canSubmit = () => true;
-  // values.email &&
-  // values.newPassword &&
-  // values.confirmPassword &&
-  // emailValid &&
-  // passwordValid &&
-  // confirmPasswordValid &&
-  // values.firstName &&
-  // values.lastName;
+  const canSubmit = () =>
+    values.email &&
+    values.newPassword &&
+    values.confirmPassword &&
+    emailValid &&
+    passwordValid &&
+    confirmPasswordValid &&
+    values.firstName &&
+    values.lastName;
 
   function handleChange(e: React.FocusEvent<HTMLInputElement>): void {
     const { name, value } = e.target; //e.target is the DOM element that triggered the event (input field)
@@ -52,7 +52,7 @@ const LogIn: React.FC = () => {
   ): Promise<void> {
     try {
       e.preventDefault();
-      if (!canSubmit) return;
+      if (!canSubmit()) return;
 
       await createUserWithEmailAndPassword(
         auth,
@@ -71,9 +71,9 @@ const LogIn: React.FC = () => {
       }
       notify.success("Registration successful");
       setTimeout(() => navigate("/login"), 1200);
-    } catch (err:any) {
+    } catch (err: any) {
       console.log("Registration failed", err);
-      notify.error(err?.message ?? 'Registration failed');
+      notify.error(err?.message ?? "Registration failed");
     }
   }
 

@@ -1,13 +1,9 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
 import { User } from "../../shared/interface/user";
-import { useDispatch } from "react-redux";
-import { userActions } from "../../store/user/userSlice";
 
 const Github: React.FC = () => {
   const data = useLoaderData<User>();
-  const dispatch = useDispatch();
-  dispatch(userActions.SET_USER(data));
   return (
     <div className="text-center m-4 bg-gray-600 text-white p-4 text-3xl">
       Github followers: {data?.followers}

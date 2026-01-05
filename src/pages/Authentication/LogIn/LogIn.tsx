@@ -53,12 +53,11 @@ const LogIn: React.FC = () => {
           createdAt: raw.createdAt?.toMillis?.() ?? null, // Firestore Timestamp -> number
         };
         dispatch(userActions.SET_USER(userDetails));
-        // Retrieve Firebase ID token (JWT) and persist for API calls
         const token = await cred.user.getIdToken();
         localStorage.setItem("token", token);
         localStorage.setItem("user", JSON.stringify(userDetails));
         notify.success("Login successful");
-        setTimeout(() => navigate("/"), 1200);
+        setTimeout(() => navigate("/"), 500);
       } else {
         notify.error("Invalid User");
       }
