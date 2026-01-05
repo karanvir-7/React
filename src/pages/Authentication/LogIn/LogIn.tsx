@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import { userActions } from "../../../store/user/userSlice";
 import { notify } from "../../../components/Toaster/Toaster";
 
+
 const LogIn: React.FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -35,7 +36,7 @@ const LogIn: React.FC = () => {
     e: React.FormEvent<HTMLFormElement>
   ): Promise<void> {
     e.preventDefault();
-    if (!canSubmit) return;
+    if (!canSubmit()) return;
 
     try {
       const cred = await signInWithEmailAndPassword(
@@ -52,6 +53,10 @@ const LogIn: React.FC = () => {
           createdAt: raw.createdAt?.toMillis?.() ?? null, // Firestore Timestamp -> number
         };
         dispatch(userActions.SET_USER(userDetails));
+        // Retrieve Firebase ID token (JWT) and persist for API calls
+        const token = await cred.user.getIdToken();
+        localStorage.setItem("token", token);
+        localStorage.setItem("user", JSON.stringify(userDetails));
         notify.success("Login successful");
         setTimeout(() => navigate("/"), 1200);
       } else {

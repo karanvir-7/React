@@ -72,6 +72,7 @@ const LogIn: React.FC = () => {
       notify.success("Registration successful");
       setTimeout(() => navigate("/login"), 1200);
     } catch (err:any) {
+      console.log("Registration failed", err);
       notify.error(err?.message ?? 'Registration failed');
     }
   }

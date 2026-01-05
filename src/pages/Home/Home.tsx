@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../../shared/utils/interceptor";
 import Card from "../../components/Card/Card";
 import { Product } from "../../shared/interface/product";
 import Pagination from "../../components/Pagination/Pagination";
@@ -16,7 +16,7 @@ const Home: React.FC = () => {
   }, []);
 
   function getProducts(limit: number, index: number) {
-    axios
+    api
       .get(url.getProducts(limit, (index - 1) * limit))
       .then((response) => {
         setProducts(response.data.products ?? []);

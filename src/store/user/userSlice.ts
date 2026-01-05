@@ -1,14 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
-import User from '../../pages/User/User';
-
+import { User } from '../../shared/interface/user';
+import { getInitialUser } from './initialUser';
 const userSlice = createSlice({
     name: 'user',
-    initialState: { user : User } ,
+    initialState: { user: getInitialUser() },
     reducers: {
         SET_USER: (state, action) => {
-            state.user = action.payload;
+            state.user = action.payload as User;
         },
-    }
+    },
 });
 
 
