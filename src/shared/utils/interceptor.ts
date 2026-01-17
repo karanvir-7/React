@@ -1,8 +1,9 @@
 import axios, { InternalAxiosRequestConfig } from "axios";
+import { serverUrl } from "./constant";
 
 
 const api = axios.create({
-  baseURL: "https://dummyjson.com",
+  baseURL: serverUrl,
 });
 
 api.interceptors.request.use(

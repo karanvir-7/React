@@ -8,6 +8,7 @@ import Github, { githubInfoLoader } from "./pages/Github/Github";
 import CartItem from "./pages/CartItem/CartItem";
 import LogIn from "./pages/Authentication/LogIn/LogIn";
 import Register from "./pages/Authentication/Register/Register";
+import Product from "./pages/Product/Product";
 
 const Router = createBrowserRouter([
   {
@@ -46,6 +47,10 @@ const Router = createBrowserRouter([
       {
         path: "register",
         element: <Register />,
+      },
+      {
+        path: "product/:productId",
+        element: <Product />,
       },
     ],
   },

@@ -1,1 +1,1 @@
-export const val = {}
+export const serverUrl = "https://dummyjson.com";
