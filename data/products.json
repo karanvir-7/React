@@ -1,0 +1,94 @@
+[
+  {
+    "id": 1,
+    "slug": "aurora-desk-lamp",
+    "name": "Aurora Desk Lamp",
+    "brand": "Northstar Studio",
+    "category": "Lighting",
+    "price": 129,
+    "inventory": 18,
+    "shortDescription": "A dimmable aluminum desk lamp with warm ambient glow for focused work.",
+    "description": "Aurora balances directional task lighting with a soft ambient edge, making it ideal for home offices, reading corners, and studio workstations.",
+    "colors": ["Matte Black", "Sand"],
+    "highlights": [
+      "Stepless dimmer with warm-to-neutral light control",
+      "Weighted base with low-profile cable routing",
+      "Machined aluminum arm with 180-degree rotation"
+    ],
+    "specifications": {
+      "Material": "Anodized aluminum",
+      "Height": "18 in",
+      "Power": "USB-C",
+      "Warranty": "2 years"
+    }
+  },
+  {
+    "id": 2,
+    "slug": "field-note-backpack",
+    "name": "Field Note Backpack",
+    "brand": "Trek Supply",
+    "category": "Bags",
+    "price": 168,
+    "inventory": 9,
+    "shortDescription": "A weather-resistant everyday backpack sized for a 16-inch laptop and weekend carry.",
+    "description": "Field Note uses recycled ripstop nylon, magnetic quick-access pockets, and a modular interior that transitions from commute mode to short travel.",
+    "colors": ["Olive", "Slate", "Clay"],
+    "highlights": [
+      "Padded internal sleeve for laptops up to 16 inches",
+      "Expandable side pockets for bottle or umbrella storage",
+      "Breathable back panel for all-day comfort"
+    ],
+    "specifications": {
+      "Capacity": "22 L",
+      "Material": "Recycled ripstop nylon",
+      "Weight": "1.1 kg",
+      "Closure": "Two-way zip"
+    }
+  },
+  {
+    "id": 3,
+    "slug": "atlas-ceramic-mug",
+    "name": "Atlas Ceramic Mug",
+    "brand": "Morrow House",
+    "category": "Kitchen",
+    "price": 34,
+    "inventory": 42,
+    "shortDescription": "A hand-finished stoneware mug designed for daily coffee rituals and clean stacking.",
+    "description": "Atlas pairs a comfortable loop handle with a satin glaze finish that resists stains and fits seamlessly into minimalist kitchen setups.",
+    "colors": ["Ivory", "Charcoal"],
+    "highlights": [
+      "Wheel-thrown silhouette with balanced weight",
+      "Microwave and dishwasher safe glazing",
+      "Stackable base for compact shelf storage"
+    ],
+    "specifications": {
+      "Capacity": "12 oz",
+      "Material": "Stoneware",
+      "Finish": "Satin glaze",
+      "Origin": "Portugal"
+    }
+  },
+  {
+    "id": 4,
+    "slug": "signal-wireless-speaker",
+    "name": "Signal Wireless Speaker",
+    "brand": "Mono Audio",
+    "category": "Audio",
+    "price": 219,
+    "inventory": 13,
+    "shortDescription": "A compact Bluetooth speaker with room-filling sound and a tactile aluminum control dial.",
+    "description": "Signal is tuned for warm mids and clear vocals, with a battery profile that covers full workdays and casual evenings indoors or out.",
+    "colors": ["Graphite", "Mist"],
+    "highlights": [
+      "Up to 14 hours of playback on a single charge",
+      "Bluetooth multipoint pairing for two devices",
+      "Textured acoustic grille with premium tactile finish"
+    ],
+    "specifications": {
+      "Battery": "14 hours",
+      "Connectivity": "Bluetooth 5.3",
+      "Charge": "USB-C fast charge",
+      "Drivers": "Dual 48 mm"
+    }
+  }
+]
